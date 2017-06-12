@@ -4,7 +4,7 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
 
 
         renderButtons();
-        $("#buttons-view").on("click", function() {
+        function space () {
 
         var spaceSearch = $(this).attr("data-name");
 
@@ -38,7 +38,7 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
         // Prepending the catImage to the images div
         $("#space-gif").append(spaceImage);
       }});
-    });
+    };
       
 
 
@@ -65,3 +65,25 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
           $("#buttons-view").append(a);
         }
       }
+
+
+            // This function handles events where a movie button is clicked
+      $("#add-space").on("click", function(event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var spaceSearch = $("#space-input").val().trim();
+
+        // Adding movie from the textbox to our array
+        spaceTerms.push(spaceSearch);
+
+        // Calling renderButtons which handles the processing of our movie array
+        renderButtons();
+      });
+
+      // Adding a click event listener to all elements with a class of "movie"
+      $(document).on("click", ".movie", space);
+
+      // Calling the renderButtons function to display the intial buttons
+      renderButtons();
+
+
