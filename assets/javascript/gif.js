@@ -19,6 +19,7 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
         console.log(queryURL);
         var results = response.data;
 
+         $("#space-gif").empty();
 
         for (var i = 0; i < results.length; i++) { 
 
@@ -31,6 +32,8 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
 
         // Saving the image_original_url property
         spaceImage.attr("src", results[i].images.fixed_height.url);
+        spaceImage.attr("src", results[i].images.fixed_height_still.url);
+
 
         // Setting the space src attribute to imageUrl
         spaceImage.attr("alt", "space image");
@@ -58,7 +61,7 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
           // Then dynamicaly generates buttons for each movie in the array
           // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
           var a = $("<button>");
-          // Adds a class of movie to our button
+          // Adds a class 
           a.addClass("spaceSearch");
           // Added a data-attribute
           a.attr("data-name", topics[i]);
@@ -84,9 +87,10 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
       });
 
       // Adding a click event listener to all elements with a class of space
-      $(document).on("click", ".spaceSearch", space);
+       $(document).on("click", ".spaceSearch", space);
 
       // Calling the renderButtons function to display the intial buttons
-      renderButtons();
+        renderButtons();
+
 
 
