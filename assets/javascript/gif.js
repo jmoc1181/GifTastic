@@ -1,9 +1,8 @@
 
 //var//buttons that will be automatically here 
-var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Solar Flare", "Asteroid"];
+var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Solar Flare", "Asteroid"];
 
-
-        renderButtons();
+        
         function space () {
 
         var spaceSearch = $(this).attr("data-name");
@@ -15,8 +14,6 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
         method: "GET"
         })
 
-
-
         // Creates AJAX call for the specific space button being clicked
         .done(function(response) {
         console.log(queryURL);
@@ -25,42 +22,48 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
 
         for (var i = 0; i < results.length; i++) { 
 
-        // Saving the image_original_url property
-        var imageUrl = results[i].images.fixed_height.url;
+         var spaceDiv = $("<div>"); 
+
+         var p = $("<p>").text("Rating: " + results[i].rating);
 
         // Creating and storing an image tag
         var spaceImage = $("<img>");
 
-        // Setting the catImage src attribute to imageUrl
-        spaceImage.attr("src", imageUrl);
+        // Saving the image_original_url property
+        spaceImage.attr("src", results[i].images.fixed_height.url);
+
+        // Setting the space src attribute to imageUrl
         spaceImage.attr("alt", "space image");
 
-        // Prepending the catImage to the images div
-        $("#space-gif").append(spaceImage);
+
+        spaceDiv.append(p);
+        spaceDiv.append(spaceImage);
+
+        $("#space-gif").prepend(spaceDiv);
+
       }});
     };
       
 
 
 
-      // Function for displaying movie data
+      // Function for displaying space buttons
       function renderButtons() {
-
         // Deletes the movies prior to adding new movies
         // (this is necessary otherwise you will have repeat buttons)
         $("#buttons-view").empty();
         // Loops through the array of movies
-        for (var i = 0; i < spaceTerms.length; i++) {
+        for (var i = 0; i < topics.length; i++) {
 
           // Then dynamicaly generates buttons for each movie in the array
           // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
           var a = $("<button>");
           // Adds a class of movie to our button
-          a.addClass("space");
+          a.addClass("spaceSearch");
           // Added a data-attribute
-          a.attr("data-name", spaceTerms[i]);
+          a.attr("data-name", topics[i]);
           // Provided the initial button text
-          a.text(spaceTerms[i]);
+          a.text(topics[i]);
           // Added the button to the buttons-view div
           $("#buttons-view").append(a);
         }
@@ -73,15 +76,15 @@ var spaceTerms = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter",
         // This line grabs the input from the textbox
         var spaceSearch = $("#space-input").val().trim();
 
-        // Adding movie from the textbox to our array
-        spaceTerms.push(spaceSearch);
+        // Adding space term from the textbox to our array
+        topics.push(spaceSearch);
 
-        // Calling renderButtons which handles the processing of our movie array
+        // Calling renderButtons which handles the processing of our space array
         renderButtons();
       });
 
-      // Adding a click event listener to all elements with a class of "movie"
-      $(document).on("click", ".movie", space);
+      // Adding a click event listener to all elements with a class of space
+      $(document).on("click", ".spaceSearch", space);
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
