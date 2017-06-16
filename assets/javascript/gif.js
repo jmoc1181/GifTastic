@@ -2,7 +2,8 @@
 //var//buttons that will be automatically here 
 var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Solar Flare", "Asteroid"];
 
-        
+$(document).on("click", ".spaceSearch", space); 
+
         function space () {
         var spaceSearch = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + spaceSearch + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -36,22 +37,12 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
         image.attr('data-still', spaceImageStill); 
         image.attr('data-animate', spaceImageAnimate);
 
-        //add data-state to spaceImage - then do if else... also add state to animation as well. 
-        // Saving the image_original_url property
-
-
-        // Setting the space src attribute to imageUrl
-        //spaceImageStill.attr("alt", "space image still");
-        //spaceImageAnimate.attr("alt", "space image animate");
-       
         spaceDiv.append(image); 
-        spaceDiv.append(p);
-        spaceDiv.append(spaceImageStill);
+        spaceDiv.prepend(p);
         $("#space-gif").append(spaceDiv);
 
 
-
-
+}
       $(".gifs").on("click", 'img', function() {
 
       // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
@@ -66,12 +57,26 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
         $(this).attr("data-state", "animate");
         console.log($(this));
       } else {
-        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("src", spaceImageStill);
         $(this).attr("data-state", "still");
-      }
-    });
-  }});
-};
+      
+    };
+  });
+
+
+        //add data-state to spaceImage - then do if else... also add state to animation as well. 
+        // Saving the image_original_url property
+
+
+        // Setting the space src attribute to imageUrl
+        //spaceImageStill.attr("alt", "space image still");
+        //spaceImageAnimate.attr("alt", "space image animate");
+       
+
+        //spaceDiv.append(spaceImageStill);
+
+
+})}
       
 
 
@@ -114,7 +119,6 @@ var topics = ["Moon", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sa
       });
 
       // Adding a click event listener to all elements with a class of space
-       $(document).on("click", ".spaceSearch", space);
 
       // Calling the renderButtons function to display the intial buttons
         renderButtons();
