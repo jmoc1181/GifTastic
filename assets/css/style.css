@@ -4,14 +4,30 @@ div {
 
 
 
- button { 
+p, form, h1 { 
+	font-family: 'Space Mono', monospace;
+	color: #2B4970; 
+
+ }
+
+ 
+
+
+button { 
 	width: 150px;
 	background-color: #2B4970;
 	color: white;
   }
 
 
+
 form { 
-	margin-top: 20px;
+	margin-top: 40px;
 
    }
+
+
+.gifarea { 
+	margin-top: 40px;
+	
+ }
