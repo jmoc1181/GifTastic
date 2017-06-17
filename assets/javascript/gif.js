@@ -36,9 +36,11 @@ $(document).on("click", ".spaceSearch", space);
         image.attr('data-still', spaceImageStill); 
         image.attr('data-animate', spaceImageAnimate);
         image.attr("alt", "space image");
+        
 
         spaceDiv.prepend(image); 
         spaceDiv.prepend(p);
+
         $("#space-gif").prepend(spaceDiv);
 }
 

@@ -1,7 +1,17 @@
-div { 
+* { 
+  box-sizing: border-box; 
+}
+
+
+.gifs { 
+
 	  display: inline-block;
  }
 
+
+.container { 
+	max-width: 1200px;
+ }
 
 
 p, form, h1 { 
@@ -10,9 +20,7 @@ p, form, h1 {
 
  }
 
- 
-
-
+	
 button { 
 	width: 150px;
 	background-color: #2B4970;
@@ -31,3 +39,16 @@ form {
 	margin-top: 40px;
 	
  }
+
+ .col-md-2 { 
+	margin-top: 26px;
+	width: 115px;
+	margin-right: 0px;
+	padding-right:0px;
+  }
+
+  .col-md-10{ 
+	margin-left: 0px;
+	padding-left: 0px;
+
+   }
